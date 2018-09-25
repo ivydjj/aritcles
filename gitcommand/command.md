@@ -23,6 +23,7 @@ git tag -d v20180809
 
 ### 删除远程tag
 git push origin :v20180809
+
 git push origin --delete tag v1.1.0.Final
 
 
