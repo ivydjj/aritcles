@@ -160,7 +160,7 @@ Content Cell  | Content Cell| Content Cell|
 ## 代码
 ### 行内代码
 
-```
+```java
 var x = "hello world"
 ```
 
@@ -168,9 +168,12 @@ var x = "hello world"
 ### 块代码
 
 
-```
-var a = "hello world";
+```java
+
+var a = "hello world";<br>
+
 var b = "good luck";
+
 ```
 
 
@@ -179,6 +182,8 @@ var b = "good luck";
 ## HTML
 ```
 <div class="hey" style="color:#00FF00">Hello world</div>
+
+<div style="background:#000; color:#FFF">背景为黑色<br>aaaa</div> 
 ```
 
 [支持的html标签](https://github.com/github/markup/tree/master#html-sanitization)
