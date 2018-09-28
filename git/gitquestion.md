@@ -1,15 +1,14 @@
 ## git gui 中文乱码解决方案
-在git的配置文件**[.gitconfig]**中设置utf8编码<br>
-```<br>
+在git的配置文件**[.gitconfig]**中设置utf8编码
+```
 [gui]
-
 	encoding = utf-8
 
 ```
 ## git commit报错
-### 错误打印<br>
+### 错误打印
 
-```<br>
+```
 $ git commit -m "add markdown dir"
 
 *** Please tell me who you are.
@@ -27,10 +26,9 @@ fatal: unable to auto-detect email address (got 'djj@DESKTOP-K7I2PRI.(none)')
 
 ```
 ### 解决方案
-在git的配置文件**[.gitconfig]**中配置user<br>
-```<br>
+在git的配置文件**[.gitconfig]**中配置user
+```
 [user]
-
-	email = 1015591892@qq.com<br>
-    name = ivy<br>
+	email = 1015591892@qq.com
+	 name = ivy
 ```
