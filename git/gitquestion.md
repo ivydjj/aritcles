@@ -1,6 +1,6 @@
 ## 1、git gui 中文乱码解决方案
 
-在git的配置文件__[.gitconfig]__中设置utf8编码
+在git的配置文件[__.gitconfig__]中设置utf8编码
 
 ```
 [gui]
@@ -30,7 +30,7 @@ fatal: unable to auto-detect email address (got 'djj@DESKTOP-K7I2PRI.(none)')
 ```
 ### 解决方案
 
-在git的配置文件__[.gitconfig]__中配置user
+在git的配置文件[__.gitconfig__]中配置user
 ```
 [user]
 	email = 1015591892@qq.com
