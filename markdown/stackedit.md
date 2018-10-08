@@ -1,4 +1,4 @@
-# github关联stackedit
+# stackedit关联github
 
 > 网址：https://stackedit.io <br>
 > 进入编辑界面：“START WRITING” <br>
