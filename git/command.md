@@ -6,11 +6,13 @@ git clone git@github.com:ivydjj/aritcles.git
 ### https克隆
 git clone https://github.com/ivydjj/aritcles.git
 
-### create a new repository on the command line
-### and push an existing repository from the command line
+### create a new repository on the command line and push an existing repository from the command line
 git init
+
 git remote add origin https://github.com/ivydjj/ivy-elastic.git
+
 git commit -m "first commit"
+
 git push -u origin master
 
 # 2、标签
