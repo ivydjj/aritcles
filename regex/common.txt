@@ -1,0 +1,136 @@
+
+##### document mapping
+
+[实例]
+    private String orderId; 替换为 "orderId":                {"type": "keyword",      "index": "true"},
+
+[正则]
+[ \t]*[\S]*[ \t]*[\S]*[ \t]*([\S]*); 替换为 "\1":                {"type": "keyword",      "index": "true"},
+
+[正则]
+[ \t]*[\S]*[ \t](\S*)[ \t]*(\S)(\S*); 替换为 "\2\3":             {"type": "\1",      "index": "true"},
+
+
+##### 匹配@Enumerated(EnumType.STRING)
+
+[实例]
+[ \t]*@Enumerated\(EnumType.STRING\)
+
+[正则]
+[ \t]@Enumerated\((\S*)[ \t]*(\S)*[ \t]*(\S*)\)
+
+
+##### liqubase column
+
+[实例]
+private Boolean readed; 替换为 <column name="readed" type="Boolean"/> ：
+
+[正则]
+([ \t]*)([\S]*)[ \t](\S*)([ \t]*)(\S\S*)(;) 替换为 <column name="\5" type="\3"/>
+
+
+[实例]
+<column name="feedback_company_id" type="BIGINT"/> 替换为 @Column(name = "feedback_company_id")：
+
+[正则]
+[ \t]*[\S]*[ \t]*[\S]*="([\S]*)"[ \t]*[\S]* 替换为 @Column\(name = "\1"\)
+
+
+[实例]
+@Column(name = "feedback_company_id") 替换为 <column name="feedback_company_id" type="BIGINT"/>：
+
+[正则]
+[ \t]*@Column\(name[ \t]*=[ \t]*"([\S]*)"\) 替换为 <column name="\1" type="VARCHAR\(64\)"/>
+
+[正则]
+[ \t]*@Column\(name[ \t]*=[ \t]*"([\S]*)"\)\r\n 替换为 空
+
+
+##### 自动生成get set 方法
+
+[实例]
+
+
+[正则]
+[ \t]*[\S]*[ \t](\S*)[ \t]*(\S)(\S*); 替换为 \1 get\U\2\E\3\(\);\r\nvoid set\U\2\E\3\(\1 \2\3\);
+
+
+##### 判断字段是否为空
+
+[实例]
+private CompanyStatus defaultCompanyStatus; 替换为
+
+if (RenweyUtil.isEmpty(rep.getDefaultCompanyStatus())){
+    return Response.ok(OperationResultRep.createFailure("defaultCompanyStatus不能为null")).build();
+}
+
+[正则]
+[ \t]*[\S]*[ \t]\S*[ \t]*(\S)(\S*); 替换为
+
+if \(RenweyUtil.isEmpty\(rep.get\U\1\E\2\(\)\)\){\r\n	return Response.ok\(OperationResultRep.createFailure\("\1\2不能为null"\)\).build\(\);\r\n}
+
+##### 去除空行
+
+[正则]
+^[ \t]*\r\n
+
+
+##### 去除备注
+
+[正则]
+[/]+[ \t]*[\S]*[ \t]*[\S]*
+
+
+##### 常规数据转换
+
+[实例]
+     private Long companyId;
+
+[正则]
+[ \t]*[\S]*[ \t]\S*[ \t]*(\S)(\S*); 替换为
+
+entity.set\U\1\E\2\(model.get\U\1\E\2\(\)\);
+rep.set\U\1\E\2\(entity.get\U\1\E\2\(\)\);
+rep.set\U\1\E\2\(model.get\U\1\E\2\(\)\);
+model.set\U\1\E\2\(entity.get\U\1\E\2\(\)\);
+model.set\U\1\E\2\(rep.get\U\1\E\2\(\)\);
+entity.set\U\1\E\2\(rep.get\U\1\E\2\(\)\);
+outerCompanyEntity.set\U\1\E\2\(rep.get\U\1\E\2\(\)\);
+rep.set\U\1\E\2\(\);
+entity.set\U\1\E\2\(\);
+
+this.\1\2 = receiverCooperationTaskRep.get\U\1\E\2\(\);
+
+
+##### entity.get()
+
+[实例]
+private Boolean readed; 替换为 entity.getReaded(), 
+
+[正则]
+[ \t]*[\S]*[ \t]\S*[ \t]*(\S)(\S*);[ \t]*\r\n 替换为 entity.get\U\1\E\2\(\), 
+
+
+##### 枚举类型中英文转换
+
+[实例]
+
+    Normal, // 普通职位 
+转换为
+						 
+	case NoAnswerCall:
+	return "未接电";
+
+[正则]
+[ \t]*([\S]*)[,][ \t]*//[ \t]*([\S]*) 转换为  case \1:\r\n    return "\2";
+
+
+
+
+
+
+
+
+
+
+
